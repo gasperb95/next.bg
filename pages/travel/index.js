@@ -11,7 +11,10 @@ export default function Posts() {
         <Link href="/">Back to home</Link>
       </h2>
     </Layout>
+    <footer>
     <Footer></Footer>
+    </footer>
+
     </>
   );
 }
