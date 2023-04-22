@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
+import Footer from '../components/footer/footer';
 
 export default function Home() {
   return (
@@ -49,16 +50,11 @@ export default function Home() {
           </Link>
         </div>
       </main>
+<footer>
+<Footer>
+</Footer>
+</footer>
 
-      <footer>
-        <a
-          href="https://brandon.gasper.one"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Brandon Gasper
-        </a>
-      </footer>
 
       <style jsx>{`
         main {

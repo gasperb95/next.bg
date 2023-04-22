@@ -29,8 +29,10 @@ export default function Me() {
       </h2>
       </main>
     </Layout>
-    <Footer>
-    </Footer>
+<footer>
+<Footer>
+</Footer>
+</footer>
     </>
   );
 }
