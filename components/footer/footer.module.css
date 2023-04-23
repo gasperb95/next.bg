@@ -13,3 +13,7 @@
     color: #0070f3;
     text-decoration: none;
   }
+
+.inline:first-child {
+    margin-left: 0;
+}
