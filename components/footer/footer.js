@@ -8,5 +8,5 @@ export default function Footer() {
                 <li className={styles.inline}><a href="https://www.instagram.com/brandon95g/" target="blank">Instagram</a></li>
                 <li className={styles.inline}><a href="https://github.com/gasperb95" target="blank">GitHub</a></li>
             </ul>
-    </div>;
+    </div>
   }
