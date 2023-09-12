@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Just a guy exploring the world and learning <code>code</code>
+          Just a guy exploring the world and learning to <code>code</code> 
         </p>
 
         <div className={styles.grid}>
