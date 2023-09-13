@@ -6,7 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@next/swc-darwin-arm64": "^13.4.19",
+
     "@vercel/analytics": "^1.0.0",
     "next": "latest",
     "react": "18.2.0",
