@@ -18,7 +18,7 @@ export default function Me() {
       <h1>Hey There!</h1>
       <Image 
       priortiy
-      src="/images/profile.jpg"
+      src="/images/profile2.jpg"
       className={utilStyles.borderCircle}
       height={400}
       width={300}
