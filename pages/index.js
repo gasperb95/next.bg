@@ -35,8 +35,8 @@ export default function Home() {
             href="/Coding"
             className={styles.card}
           >
-            <h3>Coding &rarr;</h3>
-            <p>Here I'll document my attempts at learning to code</p>
+            <h3>Resume &rarr;</h3>
+            <p>Check out my Virtual Resume</p>
           </Link>
 
           <Link
