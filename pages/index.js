@@ -17,26 +17,26 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Just a guy exploring the world and learning to <code>code</code> 
+          Experienced Product Manager with a passion for web development
         </p>
 
         <div className={styles.grid}>
           <Link href="/about-me" className={styles.card}>
             <h3>Who am I? &rarr;</h3>
-            <p>Well I don't even know, but I'll do my best here.</p>
+            <p>Find out here</p>
           </Link>
 
           <Link href="/travel" className={styles.card}>
             <h3>Travels &rarr;</h3>
-            <p>Learn about my adventures as a clueless traveler!</p>
+            <p>Learn about my adventures!</p>
           </Link>
 
           <Link
             href="/Resume"
             className={styles.card}
           >
-            <h3>Resume &rarr;</h3>
-            <p>Check out my Virtual Resume</p>
+            <h3>Resume </h3>
+            <p>Check out my virtual Resume</p>
           </Link>
 
           <Link
