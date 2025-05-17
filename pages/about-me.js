@@ -22,8 +22,8 @@ export default function Me() {
       priortiy
       src="/images/profile2.jpg"
       className={utilStyles.borderCircle}
-      height={400}
-      width={300}
+      width={450}
+      height={450}
       alt="Brandon's Profile Picture"
       /> 
       </div>
