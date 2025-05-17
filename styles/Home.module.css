@@ -85,6 +85,16 @@
   height: 1em;
 }
 
+#grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin-top: 3rem;
+  padding: 1.5rem;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

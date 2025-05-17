@@ -16,6 +16,8 @@ export default function Me() {
     </Head>
     <main>
       <h1>Hey There!</h1>
+      <h2>My name is Brandon Gasper</h2>
+      <div className={styles.grid}> 
       <Image 
       priortiy
       src="/images/profile2.jpg"
@@ -23,7 +25,11 @@ export default function Me() {
       height={400}
       width={300}
       alt="Brandon's Profile Picture"
-      />
+      /> 
+      </div>
+      <div className={styles.grid}><p>I'm a Produt Manager with 8+ years of experience. I enjoy managing complicated web projects and dabling with web coding in my spare time.
+      </p>
+      </div>
       <h2>
         <Link href="/">Back to home</Link>
       </h2>
