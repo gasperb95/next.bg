@@ -32,7 +32,7 @@ export default function Home() {
           </Link>
 
           <Link
-            href="/Coding"
+            href="/Resume"
             className={styles.card}
           >
             <h3>Resume &rarr;</h3>
