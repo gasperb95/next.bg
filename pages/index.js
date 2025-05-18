@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Experienced Product Manager with a passion for web development
+          Experienced Product Manager with a passion for web development.
         </p>
 
         <div className={styles.grid}>

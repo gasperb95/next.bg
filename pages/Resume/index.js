@@ -5,6 +5,7 @@ export default function Code() {
   return (
     <Layout>
       <h1>My Resume</h1>
+      <hr />
       <h2>Experience</h2>
       <h3>CVS Health</h3>
       <h4>Sr. Manager - Digital Supplmental Benefits - 2024 - Present</h4>
@@ -32,6 +33,7 @@ export default function Code() {
         <li>Collaborated with senior leadership to achieve VP approval of new pricing zone and worked with app and web teams to get it implemented</li>
         </ul>
       </p>
+      <hr />
       <h3> echo360 </h3>
       <h4>Product Owner - 2017 - 2021</h4>
       <h5>Summary: Utilized Full Stack Product Ownership to guide features from initial idea to customers </h5>
@@ -41,7 +43,12 @@ export default function Code() {
         <li>Oversaw delivery of a custom integration for a Fortune 100 company’s custom learning platform</li>
         <li>Managed the creation of a partnership program to enable extension of Turning Technologies’ toolset into customers’ existing solutions to make the offered platform more accessible</li>
       </ul>
-
+<hr />
+<h2>Education</h2>
+      <h3>Youngstown State University</h3>
+      <h4>Bachelor of Science in Business Administration - Magna Cum Laude</h4>
+      <p>2013 - 2017</p>
+      <p>Williamson College of Business Administration</p>
       <h2>
         <Link href="/">Back to home</Link>
       </h2>
