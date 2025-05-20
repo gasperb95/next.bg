@@ -26,8 +26,8 @@ export default function Home() {
             <p>Find out here</p>
           </Link>
 
-          <Link href="/travel" className={styles.card}>
-            <h3>Travels &rarr;</h3>
+          <Link href="/blog" className={styles.card}>
+            <h3>Blog &rarr;</h3>
             <p>Learn about my adventures!</p>
           </Link>
 
