@@ -11,7 +11,7 @@ export default function Page({ posts }) {
         {posts.map((post) => (
           <div className={styles.card2} key={post.id}>
             <Link href={`/blog/${post.id}/${post.htmlTitle}`}>
-            <img className={styles.feature} src={post.featuredImage} alt={post.htmlTitle} />
+            <img className={styles.feature} src={post.featuredImage} alt={post.featuredImageAltText} />
             <h2>{post.htmlTitle}</h2>
             </Link>
           </div>
