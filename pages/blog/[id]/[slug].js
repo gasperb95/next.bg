@@ -1,8 +1,13 @@
 import styles from '../../../styles/Home.module.css';
 import Link from 'next/link';
+import Head from 'next/head';
+
 export default function Page({ post }) {
   return (
     <div>
+        <Head>
+        <title>{post.htmlTitle}</title>
+        </Head>
         <img className={styles.featured} src={post.featuredImage} alt={post.featuredImageAltText} />
         <h1>{post.htmlTitle}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.postBody }} />

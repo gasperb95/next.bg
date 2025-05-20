@@ -2,10 +2,16 @@ import Link from 'next/link';
 import Layout from '../../components/layout';
 import Footer from '../../components/footer/footer';
 import styles from '../../styles/Home.module.css';
+import Head from 'next/head';
 
 export default function Page({ posts }) {
   return (
-    <Layout>
+          
+    <div>
+        <Head>
+        <title>Brandon's Blog</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <h1>Travel Blog Posts</h1>
       <div className='card'>
         {posts.map((post) => (
@@ -18,7 +24,7 @@ export default function Page({ posts }) {
         ))}
       </div>
       <Footer />
-    </Layout>
+    </div>
   );
 }
 
