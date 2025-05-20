@@ -1,5 +1,5 @@
 import styles from '../../../styles/Home.module.css';
-
+import Link from 'next/link';
 export default function Page({ post }) {
   return (
     <div>
@@ -9,6 +9,9 @@ export default function Page({ post }) {
         <body dangerouslySetInnerHTML={{ __html: post.postBody }} />
         {/* Add more post details here if needed */}
       </div>
+        <h2>
+        <Link href="/">Back to home</Link>
+      </h2>
     </div>
   );
 }
