@@ -78,6 +78,9 @@
 .feature {
   width: 200px;
 }
+.featured {
+  width: 100%;
+}
 .card:hover,
 .card:focus,
 .card:active {
