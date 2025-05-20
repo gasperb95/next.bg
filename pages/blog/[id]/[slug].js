@@ -3,12 +3,9 @@ import Link from 'next/link';
 export default function Page({ post }) {
   return (
     <div>
-      <div key={post.id}>
         <img className={styles.feature} src={post.featuredImage} alt={post.htmlTitle} />
-        <h2>{post.htmlTitle}</h2>
-        <body dangerouslySetInnerHTML={{ __html: post.postBody }} />
-        {/* Add more post details here if needed */}
-      </div>
+        <h1>{post.htmlTitle}</h1>
+        <div dangerouslySetInnerHTML={{ __html: post.postBody }} />
         <h2>
         <Link href="/">Back to home</Link>
       </h2>
