@@ -6,7 +6,7 @@ import Head from 'next/head';
 
 export default function Page({ posts }) {
   return (
-          
+    <Layout>
     <div>
         <Head>
         <title>Brandon's Blog</title>
@@ -25,6 +25,7 @@ export default function Page({ posts }) {
       </div>
       <Footer />
     </div>
+    </Layout>
   );
 }
 

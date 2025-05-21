@@ -1,9 +1,12 @@
 import styles from '../../../styles/Home.module.css';
 import Link from 'next/link';
 import Head from 'next/head';
+import Layout from '../../../components/layout';
+//           padding: 5rem 
 
 export default function Page({ post }) {
   return (
+    <Layout>
     <div>
         <Head>
         <title>{post.htmlTitle}</title>
@@ -15,6 +18,7 @@ export default function Page({ post }) {
         <Link href="/">Back to home</Link>
       </h2>
     </div>
+    </Layout>
   );
 }
 
