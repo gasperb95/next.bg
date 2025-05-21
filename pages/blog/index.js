@@ -12,7 +12,7 @@ export default function Page({ posts }) {
         <title>Brandon's Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Travel Blog Posts</h1>
+      <h1>My Blog</h1>
       <div className='card'>
         {posts.map((post) => (
           <div className={styles.card2} key={post.id}>
@@ -30,7 +30,7 @@ export default function Page({ posts }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch('https://api.hubspot.com/cms/v3/blogs/posts', {
+  const res = await fetch('https://api.hubspot.com/cms/v3/blogs/posts?sort=-createdAt', {
     headers: {
       Authorization: `Bearer ${process.env.HUBSPOT_KEY}`
     }

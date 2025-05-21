@@ -15,7 +15,7 @@ export default function Page({ post }) {
         <h1>{post.htmlTitle}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.postBody }} />
         <h2>
-        <Link href="/">Back to home</Link>
+        <Link href="/blog">Back to Blog</Link>
       </h2>
     </div>
     </Layout>
