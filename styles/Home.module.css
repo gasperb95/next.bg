@@ -80,7 +80,7 @@
 }
 
 .imgbox {
-  height: 125px;
+  height: 200px;
   width: 100%;
 }
 .feature {
@@ -126,6 +126,10 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+  .imgbox {
+    height: 200px;
+    width: 100%;
   }
 
 }
