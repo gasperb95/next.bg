@@ -27,7 +27,7 @@ export default function Page({ posts }) {
                     src={post.featuredImage}
                     alt={post.featuredImageAltText}
                   />
-                  <h2>{post.htmlTitle}</h2>
+                  <h2 className={styles.postTitle}>{post.htmlTitle}</h2>
                   <p>
                     {new Date(post.created).toLocaleDateString(undefined, {
                       year: 'numeric',
