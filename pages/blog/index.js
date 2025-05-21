@@ -22,11 +22,13 @@ export default function Page({ posts }) {
                 passHref
               >
                 <div>
+                  <div className={styles.imgbox}>
                   <img
                     className={styles.feature}
                     src={post.featuredImage}
                     alt={post.featuredImageAltText}
                   />
+                  </div>
                   <h2 className={styles.postTitle}>{post.htmlTitle}</h2>
                   <p>
                     {new Date(post.created).toLocaleDateString(undefined, {
