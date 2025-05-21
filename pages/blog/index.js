@@ -33,7 +33,10 @@ export default function Page({ posts }) {
           </div>
         ))}
       </div>
-      <Footer />
+      <h2>
+        <Link href="/">Back to home</Link>
+      </h2>
+    <Footer />
     </div>
     </Layout>
   );
