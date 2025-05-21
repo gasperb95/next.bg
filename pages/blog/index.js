@@ -19,6 +19,14 @@ export default function Page({ posts }) {
             <Link href={`/blog/${post.id}/${post.htmlTitle}`}>
             <img className={styles.feature} src={post.featuredImage} alt={post.featuredImageAltText} />
             <h2>{post.htmlTitle}</h2>
+            <p>
+              {new Date(post.created).toLocaleDateString(undefined, {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+              })}
+            </p>
+            <p>{post.authorName}</p>
             </Link>
           </div>
         ))}
