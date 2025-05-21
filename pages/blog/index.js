@@ -6,6 +6,7 @@ import Head from 'next/head';
 
 export default function Page({ posts }) {
   return (
+    <div>
     <Layout>
     <div>
         <Head>
@@ -36,9 +37,15 @@ export default function Page({ posts }) {
       <h2>
         <Link href="/">Back to home</Link>
       </h2>
-    <Footer />
-    </div>
+        </div>
+
+  
     </Layout>
+    <footer>
+<Footer>
+</Footer>
+</footer>
+</div>
   );
 }
 

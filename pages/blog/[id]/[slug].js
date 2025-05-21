@@ -2,11 +2,13 @@ import styles from '../../../styles/Home.module.css';
 import Link from 'next/link';
 import Head from 'next/head';
 import Layout from '../../../components/layout';
+import Footer from '../../../components/footer/footer';
 
 //           padding: 5rem 
 
 export default function Page({ post }) {
   return (
+    <div>
     <Layout>
     <div>
         <Head>
@@ -20,6 +22,11 @@ export default function Page({ post }) {
       </h2>
     </div>
     </Layout>
+    <footer>
+    <Footer>
+    </Footer>
+    </footer>
+    </div>
   );
 }
 
