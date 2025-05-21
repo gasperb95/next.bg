@@ -97,6 +97,12 @@
   border-color: #0070f3;
 }
 
+.card2:hover,
+.card2:focus,
+.card2:active {
+  color: #0070f3;
+  border-color: #0070f3;
+}
 .card h3 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
