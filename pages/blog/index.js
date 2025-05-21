@@ -16,7 +16,7 @@ export default function Page({ posts }) {
       <div className='card'>
         {posts.map((post) => (
           <div className={styles.card2} key={post.id}>
-            <Link href={`/blog/${post.id}/${post.slug.replace(/^\/?blog\/?/, '')}`}>
+            
             <img className={styles.feature} src={post.featuredImage} alt={post.featuredImageAltText} />
             <h2>{post.htmlTitle}</h2>
             <p>
@@ -27,6 +27,8 @@ export default function Page({ posts }) {
               })}
             </p>
             <p>{post.authorName}</p>
+            <Link href={`/blog/${post.id}/${post.slug.replace(/^\/?blog\/?/, '')}`}>
+            <p> View Post</p>
             </Link>
           </div>
         ))}
