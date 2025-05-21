@@ -75,13 +75,13 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  width: 350px;
+  width: 400px;
   min-height: 475px;
 }
 
 .feature {
   
-  min-height: 150px;
+  padding-bottom: 20px;
   border-radius: 5px;
 }
 .featured {
