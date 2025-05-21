@@ -33,7 +33,7 @@ export default function Page({ posts }) {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
-                    })};
+                    })}
                   </p>
                   <p>{post.authorName}</p>
                 </div>
