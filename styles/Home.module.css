@@ -80,6 +80,7 @@
 }
 .featured {
   width: 100%;
+  border-radius: 5px;
 }
 .card:hover,
 .card:focus,

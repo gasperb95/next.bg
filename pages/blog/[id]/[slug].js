@@ -2,6 +2,7 @@ import styles from '../../../styles/Home.module.css';
 import Link from 'next/link';
 import Head from 'next/head';
 import Layout from '../../../components/layout';
+
 //           padding: 5rem 
 
 export default function Page({ post }) {
@@ -21,6 +22,7 @@ export default function Page({ post }) {
     </Layout>
   );
 }
+
 
 export async function getServerSideProps(context) {
   const { id } = context.params;

@@ -29,6 +29,7 @@ export default function Page({ posts }) {
   );
 }
 
+    
 export async function getServerSideProps() {
   const res = await fetch('https://api.hubspot.com/cms/v3/blogs/posts?sort=-createdAt', {
     headers: {
