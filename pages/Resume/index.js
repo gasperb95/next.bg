@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import Layout from '../../components/layout';
-
+import Footer from '../../components/footer/footer';
+import styles from '../../styles/Home.module.css';
 export default function Code() {
   return (
+    <div> 
     <Layout>
       <h1>My Resume</h1>
       <hr />
@@ -53,5 +55,10 @@ export default function Code() {
         <Link href="/">Back to home</Link>
       </h2>
     </Layout>
+    <footer>
+    <Footer>
+    </Footer>
+    </footer>
+    </div>
   );
 }
