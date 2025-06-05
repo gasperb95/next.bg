@@ -14,7 +14,7 @@ COPY . .
 RUN npm run build
 
 # Production image, copy built assets from builder
-FROM node:18-alpine AS runner
+FROM node:-alpine AS runner
 
 WORKDIR /app
 
