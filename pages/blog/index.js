@@ -3,16 +3,21 @@ import Layout from '../../components/layout';
 import Footer from '../../components/footer/footer';
 import styles from '../../styles/Home.module.css';
 import Head from 'next/head';
+import Header from '../../components/header/header';
 
 export default function Page({ posts }) {
   return (
     <div>
-      <Layout>
-        <div>
-          <Head>
+      <Head>
             <title>Brandon's Blog</title>
             <link rel="icon" href="/favicon.ico" />
-          </Head>
+      </Head>
+      <header> 
+      <Header />
+      </header>
+      <br />
+      <Layout>
+        <div>
           <h1>My Blog</h1>
           <div className={styles.grid}>
             {posts.map((post) => (
