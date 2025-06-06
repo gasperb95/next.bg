@@ -3,7 +3,7 @@ import Layout from '../../components/layout';
 import Footer from '../../components/footer/footer';
 import styles from '../../styles/Home.module.css';
 import Head from 'next/head';
-import Header from '../../components/header/header';
+//import Header from '../../components/header/header';
 
 export default function Page({ posts }) {
   return (
@@ -13,7 +13,6 @@ export default function Page({ posts }) {
             <link rel="icon" href="/favicon.ico" />
       </Head>
       <header> 
-      <Header />
       </header>
       <br />
       <Layout>
