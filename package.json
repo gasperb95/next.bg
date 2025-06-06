@@ -3,10 +3,12 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "pm2": "pm2"
   },
   "dependencies": {
     "next": "15.3.3",
+    "pm2": "^6.0.8",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   }
