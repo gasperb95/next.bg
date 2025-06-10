@@ -33,12 +33,15 @@ export default async function handler(req, res) {
       const pid = req.query.pid;
       // Get the pid from the query parameters
       const collection = db.collection('comments'); // Replace with your collection name
-      const data = await collection.find({"blogpost": pid}).toArray();
+      const data = await collection.find({"blogpost": pid, "status": "approved"}).sort({ date: -1 }).toArray();
       res.status(200).json({ success: true, data });
-    } else if (req.method === 'POST') {
-      // Example query: Insert a document into a collection
-      const collection = db.collection('yourCollectionName');
-      const result = await collection.insertOne(req.body);
+    } 
+    else if (req.method === 'POST') {
+      const pid = req.query.pid;
+      const collection = db.collection('comments');
+      // Append blogpost field to the comment
+      const commentWithPid = { ...req.body, blogpost: pid, status: 'pending' };
+      const result = await collection.insertOne(commentWithPid);
       res.status(201).json({ success: true, result });
     } else {
       res.setHeader('Allow', ['GET', 'POST']);
