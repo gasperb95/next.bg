@@ -14,6 +14,14 @@ export default function Page({ post, comments }) {
     <div>
         <Head>
         <title>{post.htmlTitle}</title>
+        <meta name="description" content={post.metaDescription || post.htmlTitle} />
+        <meta property="og:title" content={post.htmlTitle} />
+        <meta property="og:image" content={post.featuredImage} />
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content={post.metaDescription || post.htmlTitle} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.htmlTitle} />
+        <meta name="twitter:image" content={post.featuredImage} />
         </Head>
         <img className={styles.featured} src={post.featuredImage} alt={post.featuredImageAltText} />
         <h1>{post.htmlTitle}</h1>
