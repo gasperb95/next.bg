@@ -29,13 +29,18 @@ export default async function handler(req, res) {
     const db = client.db('Blog'); // Replace with your database name
 
     if (req.method === 'GET') {
-      // Example query: Fetch all documents from a collection
-      const pid = req.query.pid;
-      // Get the pid from the query parameters
-      const collection = db.collection('comments'); // Replace with your collection name
-      const data = await collection.find({"blogpost": pid, "status": "approved"}).sort({ date: -1 }).toArray();
-      res.status(200).json({ success: true, data });
-    } 
+    const pid = req.query.pid;
+    const collection = db.collection('comments');
+    const data = await collection
+      .find({ blogpost: pid, status: 'approved' })
+      .sort({ date: -1 })
+      .toArray();
+
+    // Remove email from each comment
+    const sanitized = data.map(({ email, ...rest }) => rest);
+
+    res.status(200).json({ success: true, data: sanitized });
+  }
     else if (req.method === 'POST') {
       const pid = req.query.pid;
       const collection = db.collection('comments');
