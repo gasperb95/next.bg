@@ -1,12 +1,13 @@
 import styles from './comments.module.css';
 import useSWR, { mutate } from 'swr'
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function Comments({ postId }) {
   const { data, error } = useSWR(`/api/comments/${postId}`, fetcher)
   const formRef = useRef();
+  const [submitted, setSubmitted] = useState(false);
 
   if (error) return <div>Failed to load comments.</div>
   if (!data) return <div>Loading...</div>
@@ -26,6 +27,7 @@ export default function Comments({ postId }) {
       body: JSON.stringify(formData),
     });
     form.reset();
+    setSubmitted(true);
     mutate(`/api/comments/${postId}`); // Refresh comments
   };
 
@@ -47,22 +49,31 @@ export default function Comments({ postId }) {
           </div>
         ))}
         <div className={styles.card2}>
-          <h3>Add a Comment</h3>
-          <form onSubmit={handleSubmit} ref={formRef}>
-            <label htmlFor="name">Name:</label>
-            <br />
-            <input type="text" id="name" name="name" required />
-            <br />
-            <label htmlFor="email">Email:</label>
-            <br />
-            <input type="text" id="email" name="email" required />
-            <br />
-            <label htmlFor="text">Comment:</label>
-            <br />
-            <textarea id="text" name="text" required></textarea>
-            <br />
-            <button type="submit">Submit</button>
-          </form>
+          {submitted ? (
+            <div>
+              <h3>Thank you!</h3>
+              <p>Your comment has been submitted and will be reviewed before posting.</p>
+            </div>
+          ) : (
+            <>
+              <h3>Add a Comment</h3>
+              <form onSubmit={handleSubmit} ref={formRef}>
+                <label htmlFor="name">Name:</label>
+                <br />
+                <input type="text" id="name" name="name" required />
+                <br />
+                <label htmlFor="email">Email:</label>
+                <br />
+                <input type="text" id="email" name="email" required />
+                <br />
+                <label htmlFor="text">Comment:</label>
+                <br />
+                <textarea id="text" name="text" required></textarea>
+                <br />
+                <button type="submit">Submit</button>
+              </form>
+            </>
+          )}
         </div>
       </div>
     </div>
