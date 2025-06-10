@@ -37,7 +37,7 @@ export default async function handler(req, res) {
       .toArray();
 
     // Remove email from each comment
-    const sanitized = data.map(({ email, ...rest }) => rest);
+    const sanitized = data.map(({ email, status, ...rest }) => rest);
 
     res.status(200).json({ success: true, data: sanitized });
   }
