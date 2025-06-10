@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Layout from '../../../components/layout';
 import Footer from '../../../components/footer/footer';
 import Comments from '../../../components/comments/comments';
+import BlogPost from '../../../components/blogPost/blogPost';
 
 //           padding: 5rem 
 
@@ -23,9 +24,7 @@ export default function Page({ post, comments }) {
         <meta name="twitter:title" content={post.htmlTitle} />
         <meta name="twitter:image" content={post.featuredImage} />
         </Head>
-        <img className={styles.featured} src={post.featuredImage} alt={post.featuredImageAltText} />
-        <h1>{post.htmlTitle}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.postBody }} />
+        <BlogPost post={post} />
         <Comments postId={post.id} />
         <h2>
         <Link href="/blog">Back to Blog</Link>
