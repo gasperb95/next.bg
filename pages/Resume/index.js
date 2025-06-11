@@ -1,64 +1,69 @@
 import Link from 'next/link';
+import Head from 'next/head';
 import Layout from '../../components/layout';
 import Footer from '../../components/footer/footer';
-import styles from '../../styles/Home.module.css';
-export default function Code() {
-  return (
-    <div> 
-    <Layout>
-      <h1>My Resume</h1>
-      <hr />
-      <h2>Experience</h2>
-      <h3>CVS Health</h3>
-      <h4>Sr. Manager - Digital Supplmental Benefits - 2024 - Present</h4>
-      <h5>Summary: Curated Digital Roadmap for our Supplemntal Benefits Business</h5>
-      <p> 
-        <ul>
-          <li>Worked with cross functional teams to define and prioritize the digital roadmap</li>
-          <li>Managed cross collaboration project with internal and external partners to bring the Aetna Extra Benefits Card Program in house, delivering approx. $60M in savings to the enterprise and increased OTCHS revenue </li>
-          <li>Established weekly meeting with business leadership, design, engineering, and product to align on roadmap and features being delivered</li>
-          <li>Identified member issue impacting conversion from analytics and coordinated a fix with design and engineering that increased place order success rate by 8%</li>
-        </ul>
-      </p>
+import Image from 'next/image';
+import parse, { domToReact } from 'html-react-parser';
 
-      <h4>Manager - Front Store Web Experiences - 2021 - 2024</h4>
-      <h5>Summary: Partnered with Dev team to deliver high impact features and capabilites</h5>
-      <p> 
-        <ul>
-        <li>Created and achieved all deliverables of the full-year roadmap for front-end web team</li>
-        <li>Supervised large tech migration project, enabling faster delivery of value to business stakeholders</li>
-        <li>Oversaw both core shop features and OTCHS (benefits) features to create an integrated roadmap</li>
-        <li>Delivered “Buy Online Pickup in Store” on CVS.com</li>
-        <li>Partnered with external vendor to launch monetized placements and search on CVS.com</li>
-        <li>Flexed to take on feature creation and sizing for both my team and the mobile app team while a Product Manager was on leave of absence</li>
-        <li>Managed a contractor as direct supervisor</li>
-        <li>Collaborated with senior leadership to achieve VP approval of new pricing zone and worked with app and web teams to get it implemented</li>
-        </ul>
-      </p>
-      <hr />
-      <h3> echo360 </h3>
-      <h4>Product Owner - 2017 - 2021</h4>
-      <h5>Summary: Utilized Full Stack Product Ownership to guide features from initial idea to customers </h5>
-      <ul>
-        <li>Drove the creation of a self-managed subscription model for a new SaaS product</li>
-        <li>Worked cross-functionally with members from across the organization to set up connections with our CRM, ERP, and backend system to create a flow from Free Trial Sign Up to Customer Conversion</li>
-        <li>Oversaw delivery of a custom integration for a Fortune 100 company’s custom learning platform</li>
-        <li>Managed the creation of a partnership program to enable extension of Turning Technologies’ toolset into customers’ existing solutions to make the offered platform more accessible</li>
-      </ul>
-<hr />
-<h2>Education</h2>
-      <h3>Youngstown State University</h3>
-      <h4>Bachelor of Science in Business Administration - Magna Cum Laude</h4>
-      <p>2013 - 2017</p>
-      <p>Williamson College of Business Administration</p>
-      <h2>
-        <Link href="/">Back to home</Link>
-      </h2>
-    </Layout>
-    <footer>
-    <Footer>
-    </Footer>
-    </footer>
-    </div>
+
+
+function HtmlWithNextImage({ html }) {
+  return parse(html, {
+    replace: domNode => {
+      if (domNode.name === 'img') {
+        const { src, alt, width, height } = domNode.attribs;
+        return (
+          <Image
+            src={src}
+            alt={alt || ''}
+            width={500}
+            height={500}
+          />
+        );
+      }
+    }
+  });
+}
+
+export default function Me({ post }) {
+  return (
+    <>
+      <Layout>
+        <Head>
+          <title>My Resume</title>
+          <meta name="description" content={post.metaDescription || post.htmlTitle} />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <main>
+          <h1>{post?.htmlTitle}</h1>
+         <HtmlWithNextImage html={post?.postBody} />
+          <h2>
+            <Link href="/">Back to home</Link>
+          </h2>
+        </main>
+      </Layout>
+      <footer>
+        <Footer />
+      </footer>
+    </>
   );
+}
+
+import { MongoClient } from 'mongodb';
+
+export async function getStaticProps() {
+  const uri = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(uri);
+  const db = client.db('Blog');
+  const collection = db.collection('pages');
+  const data = await collection.find({ blogpost : "2"}).toArray();
+  client.close();
+
+  // If you expect a single post, use data[0]
+  return {
+    props: {
+      post: data[0] ? JSON.parse(JSON.stringify(data[0])) : null,
+    },
+    revalidate: 60,
+  };
 }
