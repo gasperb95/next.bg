@@ -38,9 +38,25 @@ export default function Page({ post, comments }) {
     </div>
   );
 }
+export async function getStaticPaths() {
+  // Fetch all blog posts to get their IDs
+  const res = await fetch('https://api.hubspot.com/cms/v3/blogs/posts', {
+    headers: {
+      Authorization: `Bearer ${process.env.HUBSPOT_KEY}`
+    }
+  });
+  const data = await res.json();
 
+  // Adjust this if your API returns an array in data
+  const posts = Array.isArray(data.results) ? data.results : [];
+  const paths = posts.map(post => ({
+    params: { id: post.id.toString(), slug: post.slug }
+  }));
 
-export async function getServerSideProps(context) {
+  return { paths, fallback: 'blocking' };
+}
+
+export async function getStaticProps(context) {
   const { id } = context.params;
 
   // Fetch the blog post

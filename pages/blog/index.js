@@ -59,14 +59,17 @@ export default function Page({ posts }) {
 }
 
     
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch('https://api.hubspot.com/cms/v3/blogs/posts?sort=-createdAt', {
     headers: {
       Authorization: `Bearer ${process.env.HUBSPOT_KEY}`
     }
   });
   const data = await res.json();
-  // Adjust this if the posts are nested in the response
-  const posts = data.results || data || [];
-  return { props: { posts } };
+  const posts = Array.isArray(data.results) ? data.results : [];
+
+  return {
+    props: { posts },
+    revalidate: 60, // optional: ISR
+  };
 }
