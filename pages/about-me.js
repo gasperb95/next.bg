@@ -35,7 +35,7 @@ export async function getStaticProps() {
   const client = await MongoClient.connect(uri);
   const db = client.db('Blog');
   const collection = db.collection('pages');
-  const data = await collection.find({ /* your query here */ }).toArray();
+  const data = await collection.find({ blogpost : "1"}).toArray();
   client.close();
 
   // If you expect a single post, use data[0]
