@@ -50,7 +50,7 @@ export async function getStaticPaths() {
   // Adjust this if your API returns an array in data
   const posts = Array.isArray(data.results) ? data.results : [];
   const paths = posts.map(post => ({
-    params: { id: post.id.toString(), slug: post.slug }
+    params: { id: post.id.toString(), slug: post.slug.replace(/^\/?blog\/?/, '')} 
   }));
 
   return { paths, fallback: 'blocking' };
