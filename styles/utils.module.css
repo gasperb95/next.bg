@@ -27,8 +27,14 @@
   
   .borderCircle {
     border-radius: 50px;
+    width: 100px;
   }
   
+  .postBody borderCircle {
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+  }
   .colorInherit {
     color: inherit;
   }

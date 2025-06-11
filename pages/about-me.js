@@ -1,44 +1,48 @@
 import Link from 'next/link';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 import Layout from '../components/layout';
-import Image from 'next/image';
-import utilStyles from '../styles/utils.module.css';
 import Footer from '../components/footer/footer';
+import styles from '../styles/Home.module.css';
+import utilStyles from '../styles/utils.module.css';
 
-export default function Me() {
+export default function Me({ post }) {
   return (
     <>
-    <Layout>
-    <Head>
-      <title className={styles.title}>Brandon Gasper</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-    <main>
-      <h1>Hey There!</h1>
-      <h2>My name is Brandon Gasper</h2>
-      <div className={styles.grid}> 
-      <Image 
-      priortiy
-      src="/images/profile2.jpg"
-      className={utilStyles.borderCircle}
-      width={300}
-      height={300}
-      alt="Brandon's Profile Picture"
-      /> 
-      </div>
-      <div className={styles.grid}><p>I'm a Produt Manager with 8+ years of experience. I enjoy managing complicated web projects and dabling with web coding in my spare time.
-      </p>
-      </div>
-      <h2>
-        <Link href="/">Back to home</Link>
-      </h2>
-      </main>
-    </Layout>
-<footer>
-<Footer>
-</Footer>
-</footer>
+      <Layout>
+        <Head>
+          <title>Brandon Gasper</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <main>
+          <h1>{post?.htmlTitle}</h1>
+          <div dangerouslySetInnerHTML={{ __html: post?.postBody }} />
+          <h2>
+            <Link href="/">Back to home</Link>
+          </h2>
+        </main>
+      </Layout>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
+}
+
+import { MongoClient } from 'mongodb';
+
+export async function getStaticProps() {
+  const uri = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(uri);
+  const db = client.db('Blog');
+  const collection = db.collection('pages');
+  const data = await collection.find({ /* your query here */ }).toArray();
+  client.close();
+
+  // If you expect a single post, use data[0]
+  return {
+    props: {
+      post: data[0] ? JSON.parse(JSON.stringify(data[0])) : null,
+    },
+    revalidate: 60,
+  };
 }
