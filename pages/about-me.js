@@ -4,6 +4,28 @@ import Layout from '../components/layout';
 import Footer from '../components/footer/footer';
 import styles from '../styles/Home.module.css';
 import utilStyles from '../styles/utils.module.css';
+import Image from 'next/image';
+import parse, { domToReact } from 'html-react-parser';
+
+
+
+function HtmlWithNextImage({ html }) {
+  return parse(html, {
+    replace: domNode => {
+      if (domNode.name === 'img') {
+        const { src, alt, width, height } = domNode.attribs;
+        return (
+          <Image
+            src={src}
+            alt={alt || ''}
+            width={500}
+            height={500}
+          />
+        );
+      }
+    }
+  });
+}
 
 export default function Me({ post }) {
   return (
@@ -11,11 +33,12 @@ export default function Me({ post }) {
       <Layout>
         <Head>
           <title>Brandon Gasper</title>
+          <meta name="description" content={post.metaDescription || post.htmlTitle} />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
           <h1>{post?.htmlTitle}</h1>
-          <div dangerouslySetInnerHTML={{ __html: post?.postBody }} />
+         <HtmlWithNextImage html={post?.postBody} />
           <h2>
             <Link href="/">Back to home</Link>
           </h2>
