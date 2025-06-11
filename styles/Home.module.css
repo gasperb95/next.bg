@@ -50,6 +50,7 @@
   max-width: 800px;
   margin-top: 3rem;
   padding: 1.5rem;
+  border-radius: 5px;
 }
 
 .card {
@@ -126,6 +127,11 @@
   max-width: 800px;
   margin-top: 3rem;
   padding: 1.5rem;
+}
+.aboutme {
+  border-radius: 5px;
+  width: 350px;
+  height: 350px;
 }
 
 @media (max-width: 600px) {

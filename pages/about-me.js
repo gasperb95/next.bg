@@ -18,8 +18,9 @@ function HtmlWithNextImage({ html }) {
           <Image
             src={src}
             alt={alt || ''}
-            width={500}
-            height={500}
+            width={300}
+            height={300}
+            className={styles.aboutMe}
           />
         );
       }
