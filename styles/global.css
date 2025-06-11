@@ -46,3 +46,8 @@ ul {
   margin:0 auto;
   width: 400px;
 }
+.aboutme {
+  border-radius: 5px;
+  width: 350px;
+  height: 350px;
+}
