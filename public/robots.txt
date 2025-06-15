@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://brandongasper.com
+
+# Sitemaps
+Sitemap: https://brandongasper.com/sitemap.xml
