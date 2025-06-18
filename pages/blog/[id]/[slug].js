@@ -14,15 +14,15 @@ export default function Page({ post, comments }) {
     <Layout>
     <div>
         <Head>
-        <title>{post.htmlTitle}</title>
-        <meta name="description" content={post.metaDescription || post.htmlTitle} />
-        <meta property="og:title" content={post.htmlTitle} />
-        <meta property="og:image" content={post.featuredImage} />
+        <title>{post.data[0].htmlTitle}</title>
+        <meta name="description" content={post.data[0].metaDescription || post.htmlTitle} />
+        <meta property="og:title" content={post.data[0].htmlTitle} />
+        <meta property="og:image" content={post.data[0].featuredImage} />
         <meta property="og:type" content="article" />
-        <meta property="og:description" content={post.metaDescription || post.htmlTitle} />
+        <meta property="og:description" content={post.data[0].metaDescription || post.htmlTitle} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.htmlTitle} />
-        <meta name="twitter:image" content={post.featuredImage} />
+        <meta name="twitter:title" content={post.data[0].htmlTitle} />
+        <meta name="twitter:image" content={post.data[0].featuredImage} />
         </Head>
         <BlogPost post={post} />
         <Comments postId={post.id} />
