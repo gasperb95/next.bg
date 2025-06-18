@@ -25,7 +25,7 @@ export default function Page({ post, comments }) {
         <meta name="twitter:image" content={post.data[0].featuredImage} />
         </Head>
         <BlogPost post={post} />
-        <Comments postId={post.id} />
+        <Comments postId={post.data[0].blogpost} />
         <h2>
         <Link href="/blog">Back to Blog</Link>
       </h2>
