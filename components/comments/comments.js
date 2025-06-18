@@ -2,6 +2,7 @@ import styles from './comments.module.css';
 import useSWR, { mutate } from 'swr'
 import { useRef, useState } from 'react';
 
+
 const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function Comments({ postId }) {

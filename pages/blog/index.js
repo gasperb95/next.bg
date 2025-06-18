@@ -3,9 +3,11 @@ import Layout from '../../components/layout';
 import Footer from '../../components/footer/footer';
 import styles from '../../styles/Home.module.css';
 import Head from 'next/head';
+import { MongoClient } from 'mongodb';
 //import Header from '../../components/header/header';
 
 export default function Page({ posts }) {
+  //console.log(posts);
   return (
     <div>
       <Head>
@@ -21,8 +23,8 @@ export default function Page({ posts }) {
           <div className={styles.grid}>
             {posts.map((post) => (
               <Link className={styles.card2}
-                key={post.id}
-                href={`/blog/${post.id}/${post.slug.replace(/^\/?blog\/?/, '')}`}
+                key={post.blogpost}
+                href={`/blog/${post.blogpost}/${post.slug.replace(/^\/?blog\/?/, '')}`}
                 passHref
               >
                 <div>
@@ -35,7 +37,7 @@ export default function Page({ posts }) {
                   </div>
                   <h2 className={styles.postTitle}>{post.htmlTitle}</h2>
                   <p>
-                    {new Date(post.created).toLocaleDateString(undefined, {
+                    {new Date(post.date).toLocaleDateString(undefined, {
                       year: 'numeric',
                       month: 'long',
                       day: 'numeric',
@@ -60,16 +62,18 @@ export default function Page({ posts }) {
 
     
 export async function getStaticProps() {
-  const res = await fetch('https://api.hubspot.com/cms/v3/blogs/posts?sort=-createdAt', {
-    headers: {
-      Authorization: `Bearer ${process.env.HUBSPOT_KEY}`
-    }
-  });
-  const data = await res.json();
-  const posts = Array.isArray(data.results) ? data.results : [];
+  const uri = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(uri);
+  const db = client.db('Blog');
+  const collection = db.collection('pages');
+  const posts = await collection.find({ type : "post"}).sort({ date: -1 }).toArray();
+  client.close();
+  
 
-  return {
-    props: { posts },
-    revalidate: 60, // optional: ISR
+return {
+    props: {
+      posts: posts ? JSON.parse(JSON.stringify(posts)) : [],
+    },
+    revalidate: 60,
   };
 }

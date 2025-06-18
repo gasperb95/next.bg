@@ -5,7 +5,7 @@ import Layout from '../../../components/layout';
 import Footer from '../../../components/footer/footer';
 import Comments from '../../../components/comments/comments';
 import BlogPost from '../../../components/blogPost/blogPost';
-
+import { MongoClient } from 'mongodb';
 //           padding: 5rem 
 
 export default function Page({ post, comments }) {
@@ -40,17 +40,18 @@ export default function Page({ post, comments }) {
 }
 export async function getStaticPaths() {
   // Fetch all blog posts to get their IDs
-  const res = await fetch('https://api.hubspot.com/cms/v3/blogs/posts', {
-    headers: {
-      Authorization: `Bearer ${process.env.HUBSPOT_KEY}`
-    }
-  });
-  const data = await res.json();
+   const uri = process.env.MONGODB_URI;
+   const client = await MongoClient.connect(uri);
+   const db = client.db('Blog');
+   const collection = db.collection('pages');
+   const data = await collection.find({ type : "post"}).sort({ date: -1 }).toArray();
+   client.close();
+   //const data = await res.json();
 
   // Adjust this if your API returns an array in data
-  const posts = Array.isArray(data.results) ? data.results : [];
-  const paths = posts.map(post => ({
-    params: { id: post.id.toString(), slug: post.slug.replace(/^\/?blog\/?/, '')} 
+  //const posts = Array.isArray(data.results) ? data.results : [];
+  const paths = data.map(post => ({
+    params: { id: post.blogpost.toString(), slug: post.slug.replace(/^\/?blog\/?/, '')} 
   }));
 
   return { paths, fallback: 'blocking' };
@@ -60,7 +61,7 @@ export async function getStaticProps(context) {
   const { id } = context.params;
 
   // Fetch the blog post
-  const postRes = await fetch(`https://api.hubspot.com/cms/v3/blogs/posts/${id}`, {
+  const postRes = await fetch(`https://brandongasper.com/api/blog/${id}`, {
     headers: {
       Authorization: `Bearer ${process.env.HUBSPOT_KEY}`
     }
