@@ -73,5 +73,6 @@ export async function getStaticProps(context) {
   //const commentsData = await commentsRes.json();
   //const comments = commentsData.data || [];
 
-  return { props: { post } };
+  return { props: { post }, revalidate: 60 };
+
 }
