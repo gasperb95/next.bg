@@ -1,7 +1,7 @@
    // next-sitemap.config.js
    /** @type {import('next-sitemap').IConfig} */
    module.exports = {
-     siteUrl: 'https://brandongasper.com',
+     siteUrl: 'https://www.brandongasper.com',
      generateRobotsTxt: true,
      // ... other options
    };
