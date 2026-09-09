@@ -10,10 +10,10 @@
   "dependencies": {
     "html-react-parser": "^5.2.5",
     "mongodb": "6.17",
-    "next": "^15.5.12",
+    "next": "^16.3.4",
     "next-sitemap": "^4.2.3",
     "parser": "^0.1.4",
-    "pm2": "^6.0.8",
+    "pm2": "^5.3.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "swr": "^2.3.3",

@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://brandongasper.com
+Host: https://www.brandongasper.com
 
 # Sitemaps
-Sitemap: https://brandongasper.com/sitemap.xml
+Sitemap: https://www.brandongasper.com/sitemap.xml

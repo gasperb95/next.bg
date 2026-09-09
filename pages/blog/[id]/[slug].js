@@ -61,7 +61,7 @@ export async function getStaticProps(context) {
   const { id } = context.params;
 
   // Fetch the blog post
-  const postRes = await fetch(`https://brandongasper.com/api/blog/${id}`, {
+  const postRes = await fetch(`http://localhost:3000/api/blog/${id}`, {
     headers: {
       Authorization: `Bearer ${process.env.HUBSPOT_KEY}`
     }
