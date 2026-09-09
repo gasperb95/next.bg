@@ -41,6 +41,9 @@ export default function Page({ post, comments }) {
 export async function getStaticPaths() {
   // Fetch all blog posts to get their IDs
    const uri = process.env.MONGODB_URI;
+   if (!uri) {
+     throw new Error('Missing MONGODB_URI environment variable. Please configure it in your server environment or .env file.');
+   }
    const client = await MongoClient.connect(uri);
    const db = client.db('Blog');
    const collection = db.collection('pages');
@@ -61,6 +64,9 @@ export async function getStaticProps(context) {
   const { id } = context.params;
 
   const uri = process.env.MONGODB_URI;
+  if (!uri) {
+    throw new Error('Missing MONGODB_URI environment variable. Please configure it in your server environment or .env file.');
+  }
   const client = await MongoClient.connect(uri);
   const db = client.db('Blog');
   const collection = db.collection('pages');
