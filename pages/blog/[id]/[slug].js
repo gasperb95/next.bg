@@ -60,19 +60,29 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { id } = context.params;
 
-  // Fetch the blog post
-  const postRes = await fetch(`http://localhost:3000/api/blog/${id}`, {
-    headers: {
-      Authorization: `Bearer ${process.env.HUBSPOT_KEY}`
-    }
-  });
-  const post = await postRes.json();
+  const uri = process.env.MONGODB_URI;
+  const client = await MongoClient.connect(uri);
+  const db = client.db('Blog');
+  const collection = db.collection('pages');
 
-  // Fetch the comments for this post
- // const commentsRes = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/comments/${id}`);
-  //const commentsData = await commentsRes.json();
-  //const comments = commentsData.data || [];
+  const data = await collection
+    .find({
+      $or: [{ blogpost: id }, { blogpost: Number(id) || id }]
+    })
+    .toArray();
 
-  return { props: { post }, revalidate: 60 };
+  client.close();
 
+  if (!data || data.length === 0) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      post: JSON.parse(JSON.stringify({ success: true, data })),
+    },
+    revalidate: 60,
+  };
 }
